@@ -1184,7 +1184,7 @@ function isFileURI(filename) {
 }
 
 // end include: URIUtils.js
-var wasmBinaryFile = 'TemplateProject-web.wasm';
+var wasmBinaryFile = 'LMusic-web.wasm';
 if (!isDataURI(wasmBinaryFile)) {
   wasmBinaryFile = locateFile(wasmBinaryFile);
 }
@@ -1322,10 +1322,10 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  28124: function() {if(Module.syncdone == 1) { Module.syncdone = 0; FS.syncfs(false, function (err) { assert(!err); console.log("Synced to IDBFS..."); Module.syncdone = 1; }); }},  
- 28286: function($0) {var name = '/' + UTF8ToString($0) + '_data'; FS.mkdir(name); FS.mount(IDBFS, {}, name); Module.syncdone = 0; FS.syncfs(true, function (err) { assert(!err); console.log("Synced from IDBFS..."); Module.syncdone = 1; ccall('iplug_fsready', 'v'); });},  
- 28533: function($0, $1, $2) {if(typeof window[Module.UTF8ToString($0)] === 'undefined' ) { console.log("warning - SAMFUI called before controller exists"); } else { window[Module.UTF8ToString($0)].sendMessage('SAMFUI', "", Module.HEAPU8.slice($1, $1 + $2).buffer); }},  
- 28775: function($0) {if(typeof window[Module.UTF8ToString($0)] === 'undefined' ) { console.log("warning - SendDSPIdleTick called before controller exists"); } else { window[Module.UTF8ToString($0)].sendMessage("TICK", "", 0.); }}
+  37196: function() {if(Module.syncdone == 1) { Module.syncdone = 0; FS.syncfs(false, function (err) { assert(!err); console.log("Synced to IDBFS..."); Module.syncdone = 1; }); }},  
+ 37358: function($0) {var name = '/' + UTF8ToString($0) + '_data'; FS.mkdir(name); FS.mount(IDBFS, {}, name); Module.syncdone = 0; FS.syncfs(true, function (err) { assert(!err); console.log("Synced from IDBFS..."); Module.syncdone = 1; ccall('iplug_fsready', 'v'); });},  
+ 37605: function($0, $1, $2) {if(typeof window[Module.UTF8ToString($0)] === 'undefined' ) { console.log("warning - SAMFUI called before controller exists"); } else { window[Module.UTF8ToString($0)].sendMessage('SAMFUI', "", Module.HEAPU8.slice($1, $1 + $2).buffer); }},  
+ 37847: function($0) {if(typeof window[Module.UTF8ToString($0)] === 'undefined' ) { console.log("warning - SendDSPIdleTick called before controller exists"); } else { window[Module.UTF8ToString($0)].sendMessage("TICK", "", 0.); }}
 };
 
 

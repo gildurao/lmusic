@@ -1,6 +1,6 @@
-/* Declares the TemplateProject Audio Worklet Node */
+/* Declares the LMusic Audio Worklet Node */
 
-class TemplateProjectController extends WAMController
+class LMusicController extends WAMController
 {
   constructor (actx, options) {
     options = options || {};
@@ -10,16 +10,16 @@ class TemplateProjectController extends WAMController
     if (options.processorOptions.inputChannelCount === undefined) options.processorOptions = {inputChannelCount:[]};
 
     options.buflenSPN = 1024;
-    super(actx, "TemplateProject", options);
+    super(actx, "LMusic", options);
   }
 
   static importScripts (actx) {
     var origin = "https://gildurao.github.io/lmusic/";
 
     return new Promise( (resolve) => {
-      actx.audioWorklet.addModule(origin + "scripts/TemplateProject-wam.js").then(() => {
+      actx.audioWorklet.addModule(origin + "scripts/LMusic-wam.js").then(() => {
       actx.audioWorklet.addModule(origin + "scripts/wam-processor.js").then(() => {
-      actx.audioWorklet.addModule(origin + "scripts/TemplateProject-awp.js").then(() => {
+      actx.audioWorklet.addModule(origin + "scripts/LMusic-awp.js").then(() => {
         resolve();
       }) }) });
     })
