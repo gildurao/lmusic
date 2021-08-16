@@ -1,0 +1,4 @@
+LMusic changelog
+
+
+add IPlugInstrument example as foundation for the LMusic plugin
