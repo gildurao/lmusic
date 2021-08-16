@@ -7,7 +7,7 @@ import os, sys, shutil, subprocess, glob, fileinput, string
 import semver
 
 IPLUG2_ROOT = "iPlug2"
-PROJECT_ROOT = "TemplateProject"
+PROJECT_ROOT = "LMusic"
 PROJECT_SCRIPTS = PROJECT_ROOT + "/scripts"
 
 def replacestrs(filename, s, r):
@@ -66,7 +66,7 @@ def main():
   edit = input("\nTag version and git push to origin (will prompt for commit message)? Y/N: ")
 
   if edit == 'y' or edit == 'Y':
-    os.system("git commit -a --allow-empty")
+    os.system("git commit -a --allow-empty -m \"new version\"")
     os.system("git tag v" + str(newVersionInfo))
     os.system("git push && git push --tags")
 

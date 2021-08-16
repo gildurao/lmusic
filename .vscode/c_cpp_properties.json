@@ -1,8 +1,8 @@
 {
     "env": {
         "commonIncludePaths": [
-            "${workspaceFolder}/TemplateProject/.",
-            "${workspaceFolder}/TemplateProject/**",
+            "${workspaceFolder}/LMusic/.",
+            "${workspaceFolder}/LMusic/**",
             "${workspaceFolder}/iPlug2/WDL/**",
             "${workspaceFolder}/iPlug2/IPlug/**",
             "${workspaceFolder}/iPlug2/IGraphics/**",
@@ -31,8 +31,7 @@
                 "OS_MAC",
                 "IGRAPHICS_METAL"
             ],
-            "macFrameworkPath": [
-            ],
+            "macFrameworkPath": [],
             "intelliSenseMode": "clang-x64",
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c11",
@@ -57,7 +56,8 @@
             "name": "WASM",
             "includePath": [
                 "${commonIncludePaths}",
-                "/emsdk/upstream/emscripten/system/include"
+                "/emsdk/upstream/emscripten/system/include",
+                "${workspaceFolder}/iPlug2/IPlug/Extras/Synth"
             ],
             "defines": [
                 "${commonDefs}",
@@ -68,6 +68,17 @@
             "compilerPath": "/emsdk/upstream/bin/clang",
             "cStandard": "c11",
             "cppStandard": "c++17"
+        },
+        {
+            "name": "iplug2",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64"
         }
     ],
     "version": 4
