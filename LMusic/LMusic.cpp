@@ -1,10 +1,12 @@
 #include "LMusic.h"
 #include "IPlug_include_in_plug_src.h"
 #include "LFO.h"
+#include "LSystems.h"
 
 LMusic::LMusic(const InstanceInfo &info)
     : Plugin(info, MakeConfig(kNumParams, kNumPresets))
 {
+
   GetParam(kParamGain)->InitDouble("Gain", 100., 0., 100.0, 0.01, "%");
   GetParam(kParamNoteGlideTime)->InitMilliseconds("Note Glide Time", 0., 0.0, 30.);
   GetParam(kParamAttack)->InitDouble("Attack", 10., 1., 1000., 0.1, "ms", IParam::kFlagsNone, "ADSR", IParam::ShapePowCurve(3.));
@@ -33,6 +35,18 @@ LMusic::LMusic(const InstanceInfo &info)
 #ifdef OS_WEB
     pGraphics->AttachPopupMenuControl();
 #endif
+    DolSystem dolSystem = DolSystem(
+        "F", {
+                 Rule("F", "F+F--F+F"),
+             });
+
+    std::string result = dolSystem.generate(1);
+
+    int n = result.length();
+
+    char char_array[n + 1];
+
+    std::strcpy(char_array, result.c_str());
 
     //    pGraphics->EnableLiveEdit(true);
     pGraphics->LoadFont("Roboto-Regular", ROBOTO_FN);
@@ -48,7 +62,7 @@ LMusic::LMusic(const InstanceInfo &info)
     pGraphics->AttachControl(new IVKnobControl(controls.GetGridCell(0, 2, 6).GetCentredInside(90), kParamGain, "Gain"));
     pGraphics->AttachControl(new IVKnobControl(controls.GetGridCell(1, 2, 6).GetCentredInside(90), kParamNoteGlideTime, "Glide"));
     const IRECT sliders = controls.GetGridCell(2, 2, 6).Union(controls.GetGridCell(3, 2, 6)).Union(controls.GetGridCell(4, 2, 6));
-    pGraphics->AttachControl(new IVSliderControl(sliders.GetGridCell(0, 1, 4).GetMidHPadded(30.), kParamAttack, "Attack"));
+    pGraphics->AttachControl(new IVSliderControl(sliders.GetGridCell(0, 1, 4).GetMidHPadded(30.), kParamAttack, char_array));
     pGraphics->AttachControl(new IVSliderControl(sliders.GetGridCell(1, 1, 4).GetMidHPadded(30.), kParamDecay, "Decay"));
     pGraphics->AttachControl(new IVSliderControl(sliders.GetGridCell(2, 1, 4).GetMidHPadded(30.), kParamSustain, "Sustain"));
     pGraphics->AttachControl(new IVSliderControl(sliders.GetGridCell(3, 1, 4).GetMidHPadded(30.), kParamRelease, "Release"));
