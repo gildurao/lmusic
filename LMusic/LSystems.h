@@ -37,22 +37,36 @@ public:
     DolSystem(const std::string axiom, const std::vector<Rule> ruleSet) : LindenmayerSystem(axiom, ruleSet){};
     std::string generate(int iterations)
     {
+        char sentence[9999];
 
-        std::string sentence = this->axiom;
+        for (int k = 0; k < sizeof(sentence); k++)
+        {
+            sentence[k] = this->axiom[k];
+        }
 
-        /*     sentence.resize(sentence.size() + std::string("replace").size());
+        sentence[1] = 'A';
+
+        return std::string(sentence);
+
+        /* sentence.resize(sentence.size() + std::string("replace").size());
         sentence.append("replace");
-        sentence += std::string("FF");
-        return sentence; */
+        sentence += std::string("FF"); */
+        /* char init[] = "this is init";
+        char add[] = " added now";
+        return std::strcat(init, add); */
 
         while (iterations != 0)
         {
-            for (int i = 0; i < sentence.size(); i++)
+            for (int i = 0; i < 9999; i++)
             {
-                /*   std::string current;
-                current += std::string() + sentence.at(i);
-                std::string replace = current; */
-                /* for (int j = 0; j < this->ruleSet.size(); j++)
+                char current[9999];
+                for (int o = 0; i < sizeof(sentence); i++)
+                {
+                    current[o] = sentence[o];
+                }
+                //current += std::string() + sentence[i];
+                std::string replace = current;
+                for (int j = 0; j < this->ruleSet.size(); j++)
                 {
                     std::string a = this->ruleSet[j].a;
                     if (a == current)
@@ -60,13 +74,15 @@ public:
                         replace = this->ruleSet[j].b;
                         break;
                     }
-                } */
-                sentence.resize(sentence.size() + std::string("replace").size());
-                sentence += "replace";
+                }
+                for (int m = 0; m < sizeof(replace); m++)
+                {
+                    sentence[0] = replace[0];
+                }
             }
             this->generation++;
             iterations--;
         }
-        return sentence;
+        return std::string(sentence);
     };
 };
