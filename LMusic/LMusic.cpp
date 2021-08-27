@@ -36,8 +36,8 @@ LMusic::LMusic(const InstanceInfo &info)
     pGraphics->AttachPopupMenuControl();
 #endif
     DolSystem dolSystem = DolSystem(
-        "F", {
-                 Rule("F", "F+F--F+F"),
+        "M", {
+                 Rule("M", "M+M--M+M"),
              });
 
     std::string result = dolSystem.generate(1);
@@ -152,6 +152,24 @@ void LMusic::ProcessMidiMsg(const IMidiMsg &msg)
   }
 
 handle:
+  /* IMidiMsg message = IMidiMsg(
+      msg.mOffset,
+      msg.mStatus);
+  DolSystem dolSystem = DolSystem(
+      "F", {
+               Rule("F", "F+F--F+F"),
+           });
+
+  std::string result = dolSystem.generate(1);
+
+  int n = result.length();
+
+  char char_array[n + 1];
+
+  std::strcpy(char_array, result.c_str());
+  /* msg.MakeNoteOnMsg(128, 3, 0, 0); */
+  //message.MakeNoteOnMsg(128, 3, 0, 0);
+
   mDSP.ProcessMidiMsg(msg);
   SendMidiMsg(msg);
 }
