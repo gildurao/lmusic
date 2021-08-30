@@ -53,6 +53,7 @@ public:
   void OnParamChange(int paramIdx) override;
   void OnIdle() override;
   bool OnMessage(int msgTag, int ctrlTag, int dataSize, const void *pData) override;
+  void hello();
 
 private:
   LMusicDSP<sample> mDSP{16};

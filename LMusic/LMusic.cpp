@@ -2,6 +2,9 @@
 #include "IPlug_include_in_plug_src.h"
 #include "LFO.h"
 #include "LSystems.h"
+#include <thread>
+#include <chrono>
+#include "Timer.h"
 
 LMusic::LMusic(const InstanceInfo &info)
     : Plugin(info, MakeConfig(kNumParams, kNumPresets))
@@ -138,6 +141,9 @@ void LMusic::ProcessMidiMsg(const IMidiMsg &msg)
   switch (status)
   {
   case IMidiMsg::kNoteOn:
+    /*  {
+    goto noteon;
+  } */
   case IMidiMsg::kNoteOff:
   case IMidiMsg::kPolyAftertouch:
   case IMidiMsg::kControlChange:
@@ -150,6 +156,8 @@ void LMusic::ProcessMidiMsg(const IMidiMsg &msg)
   default:
     return;
   }
+
+  /* noteon: */
 
 handle:
   /* IMidiMsg message = IMidiMsg(
@@ -166,12 +174,14 @@ handle:
 
   char char_array[n + 1];
 
-  std::strcpy(char_array, result.c_str());
-  /* msg.MakeNoteOnMsg(128, 3, 0, 0); */
-  //message.MakeNoteOnMsg(128, 3, 0, 0);
+  std::strcpy(char_array, result.c_str());*/
 
-  mDSP.ProcessMidiMsg(msg);
-  SendMidiMsg(msg);
+  IMidiMsg message = IMidiMsg();
+
+  message.MakeNoteOnMsg(52, 5, 0, 0);
+
+  mDSP.ProcessMidiMsg(message);
+  SendMidiMsg(message);
 }
 
 void LMusic::OnParamChange(int paramIdx)

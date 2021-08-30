@@ -44,17 +44,6 @@ public:
             sentence[k] = this->axiom[k];
         }
 
-        //sentence[1] = 'A';
-
-        //return std::string(sentence);
-
-        /* sentence.resize(sentence.size() + std::string("replace").size());
-        sentence.append("replace");
-        sentence += std::string("FF"); */
-        /* char init[] = "this is init";
-        char add[] = " added now";
-        return std::strcat(init, add); */
-
         while (iterations != 0)
         {
             for (int i = 0; i < 9999; i++)
@@ -64,7 +53,7 @@ public:
                 {
                     current[o] = sentence[o];
                 }
-                //current += std::string() + sentence[i];
+
                 char replace[9999];
                 for (int a = 0; a < sizeof(current); a++)
                 {
@@ -75,7 +64,7 @@ public:
                     std::string a = this->ruleSet[j].a;
                     if (a == current)
                     {
-                        //replace = this->ruleSet[j].b;
+
                         for (int t = 0; t < sizeof(this->ruleSet[j].b); t++)
                         {
                             replace[t] = this->ruleSet[j].b[t];
